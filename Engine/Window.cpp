@@ -88,3 +88,8 @@ sf::Vector2u Window::getWindowSize()
 {
     return window_size;
 }
+
+sf::RenderWindow* Window::getRenderWindow()
+{
+    return &window;
+}

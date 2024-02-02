@@ -2,6 +2,9 @@
 
 #include "Engine/Window.hpp"
 
+#include "Entity/Snake.hpp"
+#include "World/World.hpp"
+
 class Game
 {
 public:
@@ -12,13 +15,15 @@ public:
     void update();
     void render();
 
+    void restartClock();
+
     Window* getWindow();
 
 private:
-    void moveCircle( float dt );
-
-    sf::CircleShape circle;
-    sf::Vector2i increment;
+    sf::Clock clock;
+    float elapsed;
 
     Window window;
+    World world;
+    Snake snake;
 };

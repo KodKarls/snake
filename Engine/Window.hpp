@@ -24,6 +24,8 @@ public:
 
     sf::Vector2u  getWindowSize();
 
+    sf::RenderWindow* getRenderWindow();
+
 private:
     void setup( const std::string& title, const sf::Vector2u& size );
 

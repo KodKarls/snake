@@ -1,53 +1,57 @@
 #include "Game.hpp"
 
-#include "Timer/Timer.hpp"
-
-Game::Game() : window( "Chapter 2", sf::Vector2u{ 800, 600 } )
+Game::Game() :
+    window( "Chapter 2", sf::Vector2u{ 800, 600 } ),
+    world( sf::Vector2u{ 800, 600 } ),
+    snake( world.getBlockSize() )
 {
-    circle.setRadius( 50 );
-    circle.setFillColor( sf::Color::Green );
-    increment = sf::Vector2i{ 400, 400 };
+    elapsed = 0.0f;
 }
 
 void Game::handleInput()
 {
-    // Empty body
+    if( sf::Keyboard::isKeyPressed( sf::Keyboard::Up ) && snake.getDirection() != Direction::DOWN )
+    {
+        snake.setDirection( Direction::UP );
+    }
+    else if( sf::Keyboard::isKeyPressed( sf::Keyboard::Down ) && snake.getDirection() != Direction::UP )
+    {
+        snake.setDirection( Direction::DOWN );
+    }
+    else if( sf::Keyboard::isKeyPressed( sf::Keyboard::Left ) && snake.getDirection() != Direction::RIGHT )
+    {
+        snake.setDirection( Direction::LEFT );
+    }
+    else if( sf::Keyboard::isKeyPressed( sf::Keyboard::Right ) && snake.getDirection() != Direction::LEFT )
+    {
+        snake.setDirection( Direction::RIGHT );
+    }
 }
 
 void Game::update()
 {
     window.update();
 
-    float deltaTime = Timer::get()->getDeltaTime();
-    moveCircle( deltaTime );
-}
+    float timeStep = 1.0f / snake.getSpeed();
 
-void Game::moveCircle( float dt )
-{
-    sf::Vector2u windSize = window.getWindowSize();
-    auto textSize = circle.getRadius() * 2;
-
-    if( ( circle.getPosition().x > windSize.x - textSize && increment.x > 0 ) ||
-        circle.getPosition().x < 0 && increment.x < 0 )
+    if( elapsed >= timeStep)
     {
-        increment.x = -increment.x;
+        snake.tick();
+        world.update( snake );
+        elapsed -= timeStep;
+        if( snake.hasLost() )
+        {
+            snake.reset();
+        }
     }
-
-    if( ( circle.getPosition().y > windSize.y - textSize && increment.y > 0 ) ||
-        circle.getPosition().y < 0 && increment.y < 0 )
-    {
-        increment.y = -increment.y;
-    }
-
-    circle.setPosition( circle.getPosition().x + increment.x * dt,
-                        circle.getPosition().y + increment.y * dt );
 }
 
 void Game::render()
 {
     window.beginDraw();
 
-    window.draw( circle );
+    world.render( *window.getRenderWindow() );
+    snake.render( *window.getRenderWindow() );
 
     window.endDraw();
 }
@@ -55,4 +59,9 @@ void Game::render()
 Window* Game::getWindow()
 {
     return &window;
+}
+
+void Game::restartClock()
+{
+    elapsed += clock.restart().asSeconds();
 }

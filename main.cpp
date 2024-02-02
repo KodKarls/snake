@@ -1,5 +1,4 @@
 #include "Engine/Game.hpp"
-#include "Timer/Timer.hpp"
 
 int main()
 {
@@ -8,9 +7,9 @@ int main()
     while( !game.getWindow()->isDone() )
     {
         game.handleInput();
-        Timer::get()->tick();
         game.update();
         game.render();
+        game.restartClock();
     }
 
     return 0;
