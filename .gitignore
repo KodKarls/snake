@@ -1,0 +1,5 @@
+# CLion Folder
+.idea/*
+
+# Build folder
+cmake-build-debug-mingw/*
