@@ -9,7 +9,8 @@ add_executable(Snake main.cpp
                Engine/Game.cpp
                Engine/Game.hpp
                Timer/Timer.cpp
-               Timer/Timer.hpp)
+               Timer/Timer.hpp
+               Entity/SnakeStructure.hpp)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR libraries/SFML-2.6.1/lib/cmake/SFML)
