@@ -20,6 +20,7 @@ public:
 
     void setDirection( Direction dir );
     Direction getDirection();
+    Direction getPhysicalDirection();
 
     int getSpeed() const;
     sf::Vector2i getPosition();

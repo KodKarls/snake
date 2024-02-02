@@ -163,6 +163,28 @@ Direction Snake::getDirection()
     return direction;
 }
 
+Direction Snake::getPhysicalDirection()
+{
+    if( snake_body.size() <= 1 )
+    {
+        return Direction::NONE;
+    }
+
+    SnakeSegment& head = snake_body[ 0 ];
+    SnakeSegment& neck = snake_body[ 1 ];
+
+    if( head.position.x == neck.position.x )
+    {
+        return ( head.position.y > neck.position.y ? Direction::DOWN : Direction::UP );
+    }
+    else if( head.position.y == neck.position.y )
+    {
+        return ( head.position.x > neck.position.x ? Direction::RIGHT : Direction::LEFT );
+    }
+
+    return Direction::NONE;
+}
+
 int Snake::getSpeed() const
 {
     return speed;
