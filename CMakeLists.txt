@@ -12,7 +12,9 @@ add_executable(Snake main.cpp
                Timer/Timer.hpp
                Entity/SnakeStructure.hpp
                Entity/Snake.cpp
-               Entity/Snake.hpp)
+               Entity/Snake.hpp
+               World/World.cpp
+               World/World.hpp)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR libraries/SFML-2.6.1/lib/cmake/SFML)
