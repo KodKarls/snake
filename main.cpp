@@ -1,7 +1,17 @@
-#include <iostream>
+#include "Engine/Game.hpp"
+#include "Timer/Timer.hpp"
 
 int main()
 {
-    std::cout << "Hello, World!" << std::endl;
+    Game game;
+
+    while( !game.getWindow()->isDone() )
+    {
+        game.handleInput();
+        Timer::get()->tick();
+        game.update();
+        game.render();
+    }
+
     return 0;
 }

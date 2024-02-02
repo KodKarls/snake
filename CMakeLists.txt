@@ -5,7 +5,11 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Snake main.cpp
                Engine/Window.cpp
-               Engine/Window.hpp)
+               Engine/Window.hpp
+               Engine/Game.cpp
+               Engine/Game.hpp
+               Timer/Timer.cpp
+               Timer/Timer.hpp)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR libraries/SFML-2.6.1/lib/cmake/SFML)
