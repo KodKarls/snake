@@ -5,6 +5,8 @@ Game::Game() :
     world( sf::Vector2u{ 800, 600 } ),
     snake( world.getBlockSize() )
 {
+    text_box.setup( 5, 14, 350, sf::Vector2f{ 255, 0 } );
+
     elapsed = 0.0f;
 }
 
@@ -37,11 +39,13 @@ void Game::update()
     if( elapsed >= timeStep)
     {
         snake.tick();
-        world.update( snake );
+        world.update( snake, text_box );
         elapsed -= timeStep;
         if( snake.hasLost() )
         {
+            text_box.add( "GAME OVER! Score: " + std::to_string( snake.getScore() ) );
             snake.reset();
+            text_box.add( "New game has started..." );
         }
     }
 }
@@ -52,6 +56,7 @@ void Game::render()
 
     world.render( *window.getRenderWindow() );
     snake.render( *window.getRenderWindow() );
+    text_box.render( *window.getRenderWindow() );
 
     window.endDraw();
 }

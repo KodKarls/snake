@@ -3,6 +3,7 @@
 #include <SFML/Graphics/CircleShape.hpp>
 
 #include "Entity/Snake.hpp"
+#include "Entity/TextBox.hpp"
 
 class World
 {
@@ -12,7 +13,7 @@ public:
 
     void respawnApple();
 
-    void update( Snake& player );
+    void update( Snake& player, TextBox& textBox );
     void render( sf::RenderWindow& window );
 
     int getBlockSize() const;

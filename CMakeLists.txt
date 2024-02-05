@@ -14,7 +14,9 @@ add_executable(Snake main.cpp
                Entity/Snake.cpp
                Entity/Snake.hpp
                World/World.cpp
-               World/World.hpp)
+               World/World.hpp
+               Entity/TextBox.cpp
+               Entity/TextBox.hpp)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR libraries/SFML-2.6.1/lib/cmake/SFML)

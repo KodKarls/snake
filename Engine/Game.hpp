@@ -3,6 +3,7 @@
 #include "Engine/Window.hpp"
 
 #include "Entity/Snake.hpp"
+#include "Entity/TextBox.hpp"
 #include "World/World.hpp"
 
 class Game
@@ -26,4 +27,5 @@ private:
     Window window;
     World world;
     Snake snake;
+    TextBox text_box;
 };

@@ -43,12 +43,13 @@ void World::respawnApple()
     apple_shape.setPosition( item.x * block_size, item.y * block_size );
 }
 
-void World::update( Snake& player )
+void World::update( Snake& player, TextBox& textBox )
 {
     if( player.getPosition() == item )
     {
         player.extend();
         player.increaseScore();
+        textBox.add( "You ate an apple. Score: " + std::to_string( player.getScore() ) );
         respawnApple();
     }
 
