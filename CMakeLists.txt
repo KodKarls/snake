@@ -8,8 +8,6 @@ add_executable(Snake main.cpp
                Engine/Window.hpp
                Engine/Game.cpp
                Engine/Game.hpp
-               Timer/Timer.cpp
-               Timer/Timer.hpp
                Entity/SnakeStructure.hpp
                Entity/Snake.cpp
                Entity/Snake.hpp

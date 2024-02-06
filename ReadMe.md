@@ -26,6 +26,7 @@ znadujący się w głównym folderze projektu.
 
 Do poprawnego działania skryptu wymagane jest zainstalowanie i
 dodanie do ścieżki globalnej systemu następujących elementów:
+
 - CMake w wersji co najmniej 3.27 możliwy do pobrania na stronie:
 https://cmake.org/download/
 
@@ -59,6 +60,7 @@ located in the main project folder.
 
 For the script to work properly, it is required to install and
 adding the following tools to the global system path:
+
 - CMake version at least 3.27 available for download at:
   https://cmake.org/download/
 
