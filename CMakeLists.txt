@@ -3,7 +3,18 @@ project(Snake)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Snake main.cpp)
+add_executable(Snake main.cpp
+               Engine/Window.cpp
+               Engine/Window.hpp
+               Engine/Game.cpp
+               Engine/Game.hpp
+               Entity/SnakeStructure.hpp
+               Entity/Snake.cpp
+               Entity/Snake.hpp
+               World/World.cpp
+               World/World.hpp
+               Entity/TextBox.cpp
+               Entity/TextBox.hpp)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR libraries/SFML-2.6.1/lib/cmake/SFML)

@@ -1,7 +1,16 @@
-#include <iostream>
+#include "Engine/Game.hpp"
 
 int main()
 {
-    std::cout << "Hello, World!" << std::endl;
+    Game game;
+
+    while( !game.getWindow()->isDone() )
+    {
+        game.handleInput();
+        game.update();
+        game.render();
+        game.restartClock();
+    }
+
     return 0;
 }
